@@ -7,12 +7,23 @@
 #####################
 PROJECT_DIR=/var/www/localhost/htdocs/myagenda/
 WORK_DIR=${PROJECT_DIR}/app
+LOG_DIR=${WORK_DIR}/log
 if [ ! -d $WORK_DIR ];then
     cd $PROJECT_DIR
     sudo symfony new app --version=4.4
 fi
 cd $WORK_DIR
-sudo symfony server:start
+if [ ! -d $LOG_DIR ];then
+    mkdir -p $LOG_DIR
+then
+if [ ! -d /etc/apache2/sites-avalaible ];then
+    cd /etc/apache2
+    sudo mkdir p /etc/apache2/sites-avalaible
+fi
+sudo cp /home/vagrant/conf/myagenda.conf /etc/apache2/sites-avalaible
+sudo chmod 644 /etc/apache2/sites-avalaible/myagenda.conf
+sudo ln -s /etc/apache2/sites-avalaible/myagenda.conf /etc/apache2/sites-enabled/
+#sudo symfony server:start >> ${LOG_DIR}/app.log 2>&1
 
 
 # 
