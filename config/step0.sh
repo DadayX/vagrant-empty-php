@@ -22,7 +22,8 @@ if [ ! -d /etc/apache2/sites-avalaible ];then
 fi
 sudo cp /home/vagrant/conf/myagenda.conf /etc/apache2/sites-avalaible
 sudo chmod 644 /etc/apache2/sites-avalaible/myagenda.conf
-sudo ln -s /etc/apache2/sites-avalaible/myagenda.conf /etc/apache2/sites-enabled/
+sudo ln -s /etc/apache2/sites-avalaible/myagenda.conf /etc/apache2/conf.d
+sudo rc-service apache2 restart
 #sudo symfony server:start >> ${LOG_DIR}/app.log 2>&1
 
 

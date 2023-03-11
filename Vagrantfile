@@ -12,6 +12,10 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
   #config.vm.network "forwarded_port", guest: 8000, host: 8081
   config.vm.synced_folder "./src", "/var/www/localhost/htdocs/myagenda"
+  #config.vm.provision "shell", inline: <<-SHELL
+  #  cd .
+  #  git pull
+  #SHELL
   config.vm.provision "shell", path: "./config/install.sh"
   config.vm.provision "file" do |file|
     file.source = "./config/httpd.conf"
